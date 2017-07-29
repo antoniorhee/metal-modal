@@ -2,6 +2,7 @@
 
 import core from 'metal';
 import dom from 'metal-dom';
+import { Drag } from 'metal-drag-drop';
 import { EventHandler } from 'metal-events';
 import templates from './Modal.soy.js';
 import Component from 'metal-component';
@@ -18,6 +19,13 @@ class Modal extends Component {
 	 */
 	created() {
 		this.eventHandler_ = new EventHandler();
+
+		this.drag_ = new Drag({
+			disabled: this.get('disableDrag'),
+			handles: '.modal-header',
+			sources: '.modal',
+			useShim: false
+		});
 	}
 
 	/**
@@ -220,6 +228,15 @@ Modal.STATE = {
 	},
 
 	/**
+	 * Boolean to determine whether modal will be draggable.
+	 * @type {Boolean}
+	 */
+	disableDrag: {
+		validator: core.isBoolean,
+		value: false
+	},
+
+	/**
 	 * Content to be placed inside modal footer. Can be either an html string or
 	 * a function that calls incremental-dom to render the footer.
 	 * @type {string|function()}
@@ -261,6 +278,13 @@ Modal.STATE = {
 	 */
 	noCloseButton: {
 		value: false
+	},
+
+	/**
+	 * Number indicating the vertical position of modal in pixels.
+	 * @type {number}
+	 */
+	offsetTop: {
 	},
 
 	/**
