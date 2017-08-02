@@ -243,6 +243,13 @@ Modal.STATE = {
 	header: {
 	},
 
+		/**
+		 * Number indicating the max height of the modal in pixels.
+		 * @type {number}
+		 */
+		maxHeight: {
+		},
+
 	/**
 	 * Whether modal should hide on esc.
 	 * @type {boolean}
@@ -290,6 +297,13 @@ Modal.STATE = {
 	role: {
 		validator: core.isString,
 		value: 'dialog'
+	},
+
+	/**
+	 * Number indicating the width of the modal in pixels.
+	 * @type {number}
+	 */
+	width: {
 	}
 };
 
